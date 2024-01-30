@@ -1,14 +1,24 @@
-int NUM_PORT_SEN_HUM = 10; // num inteiro
-// double O_MEU_NUMERO = 1010.5; // num reais
-// char O_MEU_CARACTER = 'a'; // CARACTERES
-// string O_MEU_TEXTO = "ISTO É UM TEXTO"; // TEXTO
-// const double PI = 3.1415;
-// bool O_MEU_BOLEANO = true;
-// int x = 2, z =3, Y = 14;
+int array[3][3] = {{5,9,9},{8,9,2},{3,1,5}};
+int menor = INT_MAX;
+int linha = 0;
 
-// int a=2, b=3;
+void lerMatriz(int array[3][3]){
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            cout << array[i][j] << " ";
+            if(array[i][j] < menor){
+                menor = array[i][j];
+                linha = i;
+            }
+        }
+        cout << endl;
+    }
+    cout << "Menor: " << menor << endl;
+    cout << "Linha: " << linha << endl;
+}
 
-// int main (){
-// cout << max(a,b) <<endl;
-// return 0;
-// }
+int main(){
+    system("clear");
+    lerMatriz(array);
+    return 0;
+}
