@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h> //biblioteca para entrada e saida de dados
+#include <stdlib.h> //biblioteca para gerar numeros aleatorios
 
 // int main() {
 // printf("Teste de printf\n"); //printf (print formatted) é uma função da biblioteca padrão de C que imprime uma mensagem no ecra

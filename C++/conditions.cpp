@@ -1,7 +1,7 @@
-#include <iostream>
-#include <ctime>
-#include <cstdlib>
-using namespace std;
+#include <iostream> //biblioteca para entrada e saida de dados
+#include <ctime> //biblioteca para gerar numeros aleatorios
+#include <cstdlib> //biblioteca para gerar numeros aleatorios
+using namespace std; //usar o namespace padrão
 /**
 int a = 10;
 int b = 12;
