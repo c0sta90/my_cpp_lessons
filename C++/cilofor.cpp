@@ -16,4 +16,4 @@ int main(){
     return 0;
 }
 
-& // parametros de obrigadorio
+//& parametros de obrigadorio
