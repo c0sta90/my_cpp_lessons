@@ -12,4 +12,5 @@ int main(){
 //         double c = a/(double)b; // c recebe a divisão de a por b
 //             cout << "A divisão dos números é: " << a/b << endl; 
 //             cout << "O resto da divisão dos números é: " << a%b << endl;
-// }
+
+ }
