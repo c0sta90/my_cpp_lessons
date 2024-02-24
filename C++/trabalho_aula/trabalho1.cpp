@@ -8,7 +8,7 @@ void menu(){
     cout << "2 - Notas" << endl;
     cout << "3 - Tabuada" << endl;
     cout << "4 - Raio do circulo" << endl;
-    cout << "4 - Sair" << endl;
+    cout << "5 - Sair" << endl;
 }
 
 int getopcao(){ // Função para pegar a opção do utilizador
