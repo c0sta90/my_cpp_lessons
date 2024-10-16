@@ -9,6 +9,9 @@ int quantidade;
 int data;
 float preco;
 bool state;
+string validade;
+string codeBarras;
+
 
 // ------------------------------------------------------------------------ //
     void abrirRefri(){

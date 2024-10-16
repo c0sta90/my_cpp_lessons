@@ -8,6 +8,7 @@ struct Produto {
     char status; // D = delete, A = ativo
     float preco;
     int quantidade;
+    string data;
 };
 
 void addprodutosdb(Produto produtos[], int quantidadeAtual){
