@@ -67,3 +67,8 @@ void Executar (int opt){
             }
         }
 };
+
+int main(){
+    Refrigerante fanta;
+}
+

@@ -107,8 +107,8 @@ void startbasedados(){
 float calcularValorTotal(const Produto produtos[], int quantidadeAtual) {
     float valorTotal = 0;
     for (int i = 0; i < quantidadeAtual; i++) {
-        valorTotal += produtos[i].quantidade;
-    }
+            valorTotal += produtos[i].preco * produtos[i].quantidade;
+        }
     return valorTotal;
 }
 
@@ -137,7 +137,7 @@ int main() {
                 exibirProdutos(maxProdutos, quantidadeAtual);
                 break;
             case 3:
-                cout << "Valor total do stock: " << calcularValorTotal(maxProdutos, quantidadeAtual) << endl;
+                cout << "Valor total do stock: " << calcularValorTotal(maxProdutos, quantidadeAtual)<< "€" << endl;
                 break;
             case 4 :
                 deleteproduto(maxProdutos, quantidadeAtual);
