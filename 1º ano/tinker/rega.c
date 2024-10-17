@@ -20,7 +20,7 @@ const long PUMP1_TRIG_VAL       = 400;
 const long PUMP2_TRIG_VAL       = 400;
 const long PUMP3_TRIG_VAL       = 400;
 
-const int LED_PIN				= 3;
+const int LED_PIN				        = 3;
 const int LED_COUNT             = 18;
 const int BRIGHTNESS            = 255;
 
@@ -64,9 +64,6 @@ void setScale(){
   for(int n=ledScale2;n<=SCALE2_LAST_ID;n++) strip.setPixelColor(n, off);
   for(int n=ledScale3;n<=SCALE3_LAST_ID;n++) strip.setPixelColor(n, off);
   
-  
-  
-
   strip.show();
   
 }
@@ -134,9 +131,5 @@ void loop()
   readSensors();
   setScale();
   pumpControl();
- 
-  
-  
-  
   delay(READING_INTERVAL);
 }

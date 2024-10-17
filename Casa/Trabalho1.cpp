@@ -2,6 +2,7 @@
 #include <fstream>
 #include <set> // Para usar o set de IDs únicos 
 #include <sstream> // Para usar o istringstream para ler os IDs do arquivo
+#include <limits> // Para usar numeric_limits para limpar o buffer de entrada do cin
 
 using namespace std;
 
@@ -47,12 +48,35 @@ void lerDadosCarro(carro& c, int i) {
     cin >> c.marca;
     cout << "Digite o modelo do carro " << i+1 << ": ";
     cin >> c.modelo;
-    cout << "Digite o ano do carro " << i+1 << ": ";
-    cin >> c.ano;
-    cout << "Digite a cor do carro " << i+1 << ": ";
+
+    while (true) {
+        cout << "Digite o ano do carro " << i+1 << ": ";
+        cin >> c.ano;
+        if(cin.fail()) {
+            cin.clear(); // clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+            cout << "Entrada inválida. Por favor, insira um número inteiro para o ano." << endl;
+        } else {
+            break;
+        }
+    }
+
+    cout << "Digite a cor do carro" << i+1 << ": ";
     cin >> c.cor;
-    cout << "Digite o preço do carro " << i+1 << ": ";
-    cin >> c.preco;
+    cout << "Digite a matrícula do carro " << i+1 << ": ";
+    cin >> c.matricula;
+
+    while (true) {
+        cout << "Digite o preço do carro " << i+1 << ": ";
+        cin >> c.preco;
+        if(cin.fail()) {
+            cin.clear(); // clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+            cout << "Entrada inválida. Por favor, insira um número válido para o preço." << endl;
+        } else {
+            break;
+        }
+    }
 }
 
 void salvarCarro(ofstream& arquivo, int id, carro& c) {
@@ -75,8 +99,8 @@ int main(){
     cout << "Quantos carros deseja inserir (até 100)? ";
     cin >> n;
     if(n > 100) {
+        return main();
         cout << "Número máximo de carros é 100." << endl;
-        return 1;
     }
 
     for(int i = 0; i < n; i++){
