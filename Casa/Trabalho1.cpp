@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <set>
-#include <sstream>
+#include <set> // Para usar o set de IDs únicos 
+#include <sstream> // Para usar o istringstream para ler os IDs do arquivo
 
 using namespace std;
 
@@ -11,6 +11,7 @@ struct carro{
     int ano;
     string cor;
     float preco;
+    string matricula;
 };
 
 void printCarro(carro c){
@@ -18,6 +19,7 @@ void printCarro(carro c){
     cout << "Modelo: " << c.modelo << endl;
     cout << "Ano: " << c.ano << endl;
     cout << "Cor: " << c.cor << endl;
+    cout << "Matricula: " << c.matricula << endl;
     cout << "Preço: " << c.preco << "€" << endl;
 }
 
@@ -54,10 +56,11 @@ void lerDadosCarro(carro& c, int i) {
 }
 
 void salvarCarro(ofstream& arquivo, int id, carro& c) {
-    arquivo << id << " " << c.marca << " " << c.modelo << " " << c.ano << " " << c.cor << " " << c.preco << "€" << endl;
+    arquivo << id << " " << c.marca << " " << c.modelo << " " << c.ano << " " << c.cor << " " << c.preco << "€ " << c.matricula << endl;
 }
 
 int main(){
+    system("clear");
     carro carros[100];
     ofstream arquivo; 
     arquivo.open("carros.csv", ios::app); //append mode
