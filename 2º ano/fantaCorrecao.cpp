@@ -47,21 +47,25 @@ class Refrigerante{
     //Beber refrigerante
     void beberRefrigerante(){
         double qnt;
-        
-        cout << "Há " << qntSumoDisponivel << " de " << refrigerante.marca << " disponíveis" << endl;
-        cout << "Quantos ml quer beber? ";
-        cin >> qnt;        
-        if(refrigerante.status == true){
-            if(qnt <= qntSumoDisponivel){
-                qntSumoDisponivel -= qnt;
-                cout << "Está a beber " << qnt << " de " << refrigerante.marca << endl;
-                cout << "Há " << qntSumoDisponivel << " de " << refrigerante.marca << " disponíveis" << endl;
-            }else{
-                cout << "Não há sumo suficiente" << endl;
-            }
-        }else{
-            cout << "Lata fechada" << endl;
+        if (qntSumoDisponivel == 0){
+            cout << "Não há sumo disponível" << endl;
         }
+        
+        if(refrigerante.status){
+            cout << "Há " << qntSumoDisponivel << " de " << refrigerante.marca << " disponíveis" << endl;
+            cout << "Quantos ml quer beber? ";
+            cin >> qnt;        
+                    if(refrigerante.status == true){
+                        if(qnt <= qntSumoDisponivel){
+                            qntSumoDisponivel -= qnt;
+                            cout << "Está a beber " << qnt << " de " << refrigerante.marca << endl;
+                            cout << "Há " << qntSumoDisponivel << " de " << refrigerante.marca << " disponíveis" << endl;
+                        }else{
+                            cout << "Não há sumo suficiente" << endl;
+                        }
+                    }else{
+                        cout << "Lata fechada" << endl;
+        };          };
     };
 };
 int main(){
