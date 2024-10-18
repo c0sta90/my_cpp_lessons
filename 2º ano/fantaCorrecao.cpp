@@ -16,7 +16,7 @@ struct lata{
     string materialEmbalagem;
 
     double capacidade;
-    double  preco;
+    double preco;
     double peso;
 
     bool status;
@@ -47,6 +47,7 @@ class Refrigerante{
     //Beber refrigerante
     void beberRefrigerante(){
         double qnt;
+        
         cout << "Há " << qntSumoDisponivel << " de " << refrigerante.marca << " disponíveis" << endl;
         cout << "Quantos ml quer beber? ";
         cin >> qnt;        
