@@ -1,6 +1,6 @@
 #include <iostream>
 
-using namespace std;
+using namespace std; // std::cout
 
 class Refrigerante {
 private:
