@@ -3,6 +3,7 @@
 #include <set> // Para usar o set de IDs únicos 
 #include <sstream> // Para usar o istringstream para ler os IDs do arquivo
 #include <limits> // Para usar numeric_limits para limpar o buffer de entrada do cin
+#include <algorithm> // Para usar transform para converter para maiúsculas
 
 using namespace std;
 
@@ -14,6 +15,35 @@ struct carro{
     float preco;
     string matricula;
 };
+
+// Função para converter uma string para maiúsculas
+string toUpperCase(const string& input) {
+    string result = input;
+    transform(result.begin(), result.end(), result.begin(), ::toupper);
+    return result;
+}
+
+// Função para formatar a matrícula
+string formatMatricula(const string& matricula) {
+    string cleaned;  // string para armazenar a matrícula sem traços
+    for (char c : matricula) {
+        if (isalnum(c)) {  // Se o caractere for alfanumérico (letra ou número)
+            cleaned += c;
+        }
+    }
+
+    if (cleaned.length() != 6) {  // Verifica se tem exatamente 6 caracteres
+        return "Matrícula inválida!";
+    }
+
+    // Converte para maiúsculas
+    cleaned = toUpperCase(cleaned);
+
+    // Insere os traços no formato XX-00-XX
+    string formatted = cleaned.substr(0, 2) + "-" + cleaned.substr(2, 2) + "-" + cleaned.substr(4, 2);
+    
+    return formatted;
+}
 
 void printCarro(carro c){
     cout << "Marca: " << c.marca << endl;
@@ -63,8 +93,11 @@ void lerDadosCarro(carro& c, int i) {
 
     cout << "Digite a cor do carro" << i+1 << ": ";
     cin >> c.cor;
+
+    string matricula;
     cout << "Digite a matrícula do carro " << i+1 << ": ";
-    cin >> c.matricula;
+    cin >> matricula;
+    c.matricula = formatMatricula(matricula); // Formatar a matrícula
 
     while (true) {
         cout << "Digite o preço do carro " << i+1 << ": ";
@@ -99,8 +132,8 @@ int main(){
     cout << "Quantos carros deseja inserir (até 100)? ";
     cin >> n;
     if(n > 100) {
-        return main();
         cout << "Número máximo de carros é 100." << endl;
+        return main();
     }
 
     for(int i = 0; i < n; i++){

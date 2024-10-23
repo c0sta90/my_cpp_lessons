@@ -41,7 +41,7 @@ class Refrigerante{
             cout << "Lata fechada" << endl;
             refrigerante.status = true;
         }else{
-            cout << "Lata aberta" << endl;
+            cout << "A abrir a lata ..." << endl;
     }   };
 
     //Beber refrigerante
