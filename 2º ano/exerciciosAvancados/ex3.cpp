@@ -128,6 +128,6 @@ void graficoHorizontal(int x, int y, int z){
 
 
 int main(){
-graficoHorizontal(200,100,500) ;
+graficoHorizontal(510,100,500) ;
   return 0;
 }  
