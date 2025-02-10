@@ -12,8 +12,8 @@ int main() {
     cout << "Digite uma frase para o próximo jogador adivinhar: ";
     getline(cin, frase);
 
-    // Tentativa de limpar a tela (pode ser comentada caso não funcione no sistema)
-    system("clear"); // Use "CLS" no Windows
+    
+    system("clear");
 
     // Criando a versão oculta da frase
     string frase_mostrada = frase;
