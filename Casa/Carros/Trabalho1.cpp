@@ -1,4 +1,13 @@
-#include "libs/libs.h"
+/**
+ * @file carro.cpp
+ * @brief Trabalho de Carros com base de dados
+ * @version 0.1
+ * 
+ * @author C0sta
+ * @date 2024
+ */
+
+#include "libs.h"
 
 using namespace std;
 
@@ -9,6 +18,11 @@ struct carro{
     string cor;
     float preco;
     string matricula;
+};
+
+void menu(){
+    cout << "Menu" << endl;
+    cout << "Adicionar carro" << endl;
 };
 
 // Função para converter uma string para maiúsculas
@@ -113,9 +127,10 @@ void salvarCarro(ofstream& arquivo, int id, carro& c) {
 
 int main(){
     system("clear");
+
     carro carros[100];
     ofstream arquivo; 
-    arquivo.open("carros.csv", ios::app); //append mode
+    arquivo.open("carros.csv", ios::app); // Append mode
     ifstream arquivoLeitura("carros.csv");
     set<int> ids;
 
@@ -123,23 +138,55 @@ int main(){
     lerIdsExistentes(arquivoLeitura, ids);
     arquivoLeitura.close();
 
-    int n;
-    cout << "Quantos carros deseja inserir (até 100)? ";
-    cin >> n;
-    if(n > 100) {
-        cout << "Número máximo de carros é 100." << endl;
-        return main();
-    }
+    int opcao;
+    do {
+        cout << "\nMenu de opções:\n";
+        cout << "1. Inserir carros\n";
+        cout << "2. Visualizar carros\n";
+        cout << "3. Sair\n";
+        cout << "Escolha uma opção: ";
+        cin >> opcao;
 
-    for(int i = 0; i < n; i++){
-        int id = generateUniqueId(ids);
-        lerDadosCarro(carros[i], i);
-        salvarCarro(arquivo, id, carros[i]);
-    }
-    arquivo.close();
+        switch(opcao) {
+            case 1: {
+                int n;
+                cout << "Quantos carros deseja inserir (até 100)? ";
+                cin >> n;
 
-    for(int i = 0; i < n; i++) {
-        printCarro(carros[i]);
-    }
+                if(n > 100) {
+                    cout << "Número máximo de carros é 100." << endl;
+                    break;
+                }
+
+                for(int i = 0; i < n; i++){
+                    int id = generateUniqueId(ids);
+                    lerDadosCarro(carros[i], i);
+                    salvarCarro(arquivo, id, carros[i]);
+                }
+                arquivo.close();
+                cout << n << " Carros inseridos com sucesso!" << endl;
+                break;
+            }
+
+            case 2: {
+                cout << "\nCarros cadastrados:\n";
+                for(int i = 0; i < 100; i++) {
+                    if (carros[i].modelo != "") {
+                        printCarro(carros[i]);
+                    }
+                }
+                break;
+            }
+
+            case 3:
+                cout << "Saindo do programa." << endl;
+                break;
+
+            default:
+                cout << "Opção inválida, tente novamente!" << endl;
+        }
+
+    } while(opcao != 3);
+
     return 0;
 }
